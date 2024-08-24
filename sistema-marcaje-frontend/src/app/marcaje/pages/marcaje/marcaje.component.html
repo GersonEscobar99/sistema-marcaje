@@ -1,0 +1,30 @@
+<div class="bootstrap-wrapper d-flex align-items-center justify-content-center vh-100 bg-light">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card border-0 shadow-lg">
+            <div class="card-body p-4 text-center">
+              <h1 class="card-title mb-4 text-primary">Bienvenido</h1>
+  
+              <form (ngSubmit)="onSubmit()" #marcajeForm="ngForm" class="d-flex flex-column align-items-center">
+                <div class="mb-3 w-75">
+                  <label for="horaEntrada" class="form-label">Hora de entrada:</label>
+                  <input [(ngModel)]="marcaje.horaEntrada" type="time" name="horaEntrada" id="horaEntrada" class="form-control" placeholder="Hora de entrada" required>
+                </div>
+  
+                <div class="mb-3 w-75">
+                  <label for="horaSalida" class="form-label">Hora de salida:</label>
+                  <input [(ngModel)]="marcaje.horaSalida" type="time" name="horaSalida" id="horaSalida" class="form-control" placeholder="Hora de salida" required>
+                </div>
+  
+                <div class="d-grid gap-2 mt-4 w-50">
+                  <button type="submit" class="btn btn-primary btn-sm rounded-pill">Registrar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

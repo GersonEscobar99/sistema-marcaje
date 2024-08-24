@@ -1,0 +1,59 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-6 offset-md-3">
+                <div class="card shadow-sm p-4">
+                    <div class="text-center">
+                        <img src="../../../assets/agregar-usuario.png" alt="Usuario" width="100" height="100" />
+                    </div>
+                    <h1 class="text-center mb-4">Regístrate aquí</h1>
+
+                    <form (ngSubmit)="formSubmit()">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre:</label>
+                            <input [(ngModel)]="user.nombre" name="nombre" id="nombre" type="text" class="form-control"
+                                placeholder="Ingrese su nombre" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="apellido" class="form-label">Apellido:</label>
+                            <input [(ngModel)]="user.apellido" name="apellido" id="apellido" type="text"
+                                class="form-control" placeholder="Ingrese su apellido" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input [(ngModel)]="user.email" name="email" id="email" type="email" class="form-control"
+                                placeholder="Ingrese su correo" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Teléfono:</label>
+                            <input [(ngModel)]="user.telefono" name="telefono" id="telefono" type="text"
+                                class="form-control" placeholder="Ingrese su teléfono" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Nombre de usuario:</label>
+                            <input [(ngModel)]="user.username" name="username" id="username" type="text"
+                                class="form-control" placeholder="Ingrese su nombre de usuario" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña:</label>
+                            <input [(ngModel)]="user.password" name="password" id="password" type="password"
+                                class="form-control" placeholder="Ingrese su contraseña" required />
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Registrar</button>
+                            <button type="reset" class="btn btn-secondary ms-3">
+                                Limpiar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

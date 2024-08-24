@@ -1,0 +1,37 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+          <div class="card shadow-sm p-4">
+            <div class="text-center">
+              <img src="../../../assets/inicio.png" alt="Login" width="100" height="100" class="mb-3">
+            </div>
+            <h1 class="text-center mb-4">Inicio de sesión</h1>
+
+            <!-- Alertas -->
+            <div *ngIf="alertMessage" class="alert {{alertClass}} alert-dismissible fade show" role="alert">
+              {{ alertMessage }}
+            </div>
+
+            <!-- Formulario -->
+            <form (ngSubmit)="formSubmit()">
+              <div class="form-group mb-3">
+                <label for="username">Nombre de usuario:</label>
+                <input [(ngModel)]="loginData.username" name="username" id="username" class="form-control" placeholder="Ingrese el usuario" required>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="password">Contraseña:</label>
+                <input [(ngModel)]="loginData.password" type="password" name="password" id="password" class="form-control" placeholder="Ingrese la contraseña" required>
+              </div>
+
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary me-2">Iniciar sesión</button>
+                <button type="reset" class="btn btn-secondary">Limpiar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
