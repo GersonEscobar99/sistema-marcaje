@@ -2,6 +2,7 @@
     <div class="card">
       <div class="card-header">
         <h2 class="mb-0">Lista de Usuarios</h2>
+        <button [routerLink]="['/signup']" class="btn btn-success m-1">Agregar usuario</button>
       </div>
       <div class="card-body">
         <table class="table table-bordered table-hover">
@@ -26,8 +27,9 @@
               <td>{{ usuario.email }}</td>
               <td>{{ usuario.telefono }}</td>
               <td>
-                <a [routerLink]="['/listaUsuarios' ,usuario.username]"> detalle</a>
-                <a>actualizar</a>
+                <a [routerLink]="['/user/listaUsuarios' ,usuario.username]" class="btn btn-success m-1"> detalle</a>
+                <a [routerLink]="['/user/editar', usuario.id]" class="btn btn-primary m-1">Modificar</a>
+                <button (click)="eliminarUsuario(usuario.id!)" class="btn btn-danger m-1" >Eliminar</button>
               
               </td>
             </tr>

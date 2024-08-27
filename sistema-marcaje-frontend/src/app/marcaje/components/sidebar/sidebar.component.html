@@ -1,0 +1,28 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened>
+      <mat-nav-list>
+        <mat-list-item>
+          <mat-icon>home</mat-icon>
+          <a mat-button routerLink="/home">Inicio</a>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon>group</mat-icon>
+          <a mat-button routerLink="/user/listaUsuarios">CRUD Usuarios</a>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Sistema Marcaje</span>
+      </mat-toolbar>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+  

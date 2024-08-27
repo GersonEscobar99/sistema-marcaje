@@ -1,0 +1,12 @@
+/* Asegúrate de que el sidebar esté posicionado correctamente */
+marcaje-sidebar {
+    display: block;
+    position: relative;
+    z-index: 1000; /* Asegúrate de que esté sobre otros elementos si es necesario */
+  }
+  
+  /* Agrega margen para el contenedor principal si es necesario */
+  .container {
+    margin-top: 20px; /* Ajusta según sea necesario */
+  }
+  

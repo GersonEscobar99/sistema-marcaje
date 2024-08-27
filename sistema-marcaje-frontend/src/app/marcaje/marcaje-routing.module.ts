@@ -1,19 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MarcajeComponent } from './pages/marcaje/marcaje.component';
 import { ListaUsuariosComponent } from './pages/lista-usuarios/lista-usuarios.component';
 import { DetalleUsuarioComponent } from './pages/detalle-usuario/detalle-usuario.component';
 import { AuthGuard } from '../auth.guard';
 import { EntradaComponent } from './pages/entrada/entrada.component';
 import { SalidaComponent } from './pages/salida/salida.component';
 import { HistorialComponent } from './pages/historial/historial.component';
+import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
 
 const routes: Routes = [
-  {
-    path:'marcaje',
-    component: MarcajeComponent,
-    canActivate:[AuthGuard]
-  },
   {
     path:'listaUsuarios',
     component: ListaUsuariosComponent,
@@ -25,8 +20,7 @@ const routes: Routes = [
     canActivate:[AuthGuard]
   },
   { path: 'entrada', 
-    component: EntradaComponent, 
-    canActivate: [AuthGuard] 
+    component: EntradaComponent
   },
   { path: 'salida', 
     component: SalidaComponent, 
@@ -36,13 +30,10 @@ const routes: Routes = [
     component: HistorialComponent, 
     canActivate: [AuthGuard] 
   },
-/*   { path: '', 
-    redirectTo: '/entrada', 
-    pathMatch: 'full' 
+  {
+    path:'editar/:usuarioId',
+    component:EditarUsuarioComponent
   },
-  { path: '**', 
-    redirectTo: '/entrada' 
-  } */
 
 ];
 

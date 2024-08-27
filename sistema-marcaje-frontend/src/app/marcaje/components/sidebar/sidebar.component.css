@@ -1,0 +1,37 @@
+   .example-container {
+    height: 100vh;
+    display: flex;
+    /*flex-direction: row; /* Asegura que el contenido se disponga horizontalmente */
+  }
+  
+  .mat-sidenav-container {
+    display: flex;
+    flex-direction: row; /* Asegura que el sidenav y el contenido se dispongan horizontalmente */
+    width: 100%;
+  }
+  
+  .mat-sidenav {
+    width: 250px; /* Ancho del sidebar */
+    flex-shrink: 0; /* Evita que el sidenav se reduzca de tamaño */
+  }
+  
+  .mat-sidenav-content {
+    flex: 1; /* El contenido ocupará el espacio restante */
+    margin-left: 250px; /* Margen para dejar espacio al sidebar */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mat-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+  
+  .content {
+    margin-top: 64px; /* Ajusta este valor según la altura de la toolbar */
+    padding: 16px;
+  }
+  

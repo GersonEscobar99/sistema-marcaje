@@ -8,23 +8,33 @@ import { User } from '../interfaces/user.interface';
 })
 export class UserService {
 
-  apiUrl = 'http://localhost:8080';
+  apiUrl = 'http://localhost:8080/usuarios';
 
   constructor(private http: HttpClient) { }
 
   public addUser(user: User): Observable<any>{
-    const url = `${this.apiUrl}/usuarios/`
+    const url = `${this.apiUrl}/`
     return this.http.post<User>(`${url}`, user);
   }
 
   obtenerUsuariosPaginados(page: number, size: number): Observable<any> {
-    const url = `${this.apiUrl}/usuarios/paginados/`
+    const url = `${this.apiUrl}/paginados/`
     let params = new HttpParams().set('page', page).set('size', size);
     return this.http.get<any>(url, { params });
   }
 
   obtenerUsuario(username: string): Observable<User>{
-    const url = `${this.apiUrl}/usuarios/${username}`;
+    const url = `${this.apiUrl}/${username}`;
     return this.http.get<User>(url);
+  }
+
+  eliminarUsuario(userId: number):Observable<User>{
+    const url = `${this.apiUrl}/${userId}`;
+    return this.http.delete<User>(url);
+  }
+
+  actualizarUsuario(id: number, user: User):Observable<User>{
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<User>(url,user);
   }
 }

@@ -1,13 +1,15 @@
 .home-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Cambiar de center a flex-start para alinear hacia arriba */
-    align-items: center;
-    min-height: 80vh; /* Cambiar height a min-height para mayor control */
-    text-align: center;
-    padding-top: 50px; /* Agregar un poco de padding superior */
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+  align-items: center;
+  min-height: 80vh; 
+  text-align: center;
+  padding-top: 0; 
+  position: relative;
+  top: 10px; /* Mueve hacia arriba */
+}
+
   .home-container h1 {
     margin-bottom: 20px;
     font-size: 2.5rem;
@@ -20,6 +22,26 @@
   
   .button-group {
     display: flex;
-    gap: 10px; /* Espaciado entre botones */
+    gap: 10px; 
   }
   
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+mat-card {
+  padding: 20px;
+  width: 400px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+

@@ -48,13 +48,4 @@ public class MarcajeServicioImpl implements MarcajeServicio {
         return marcajeRespository.findTopByUsuarioOrderByIdDesc(usuario);
     }
 
-//    @Override
-//    public Marcaje obtenerMarcajeActivo(Usuario usuario) {
-//        List<Marcaje> marcajes = marcajeRespository.findByUsuario(usuario);
-//        // Buscamos el último marcaje sin hora de salida
-//        return marcajes.stream()
-//                .filter(marcaje -> marcaje.getHoraSalida() == null)
-//                .findFirst()
-//                .orElse(null);
-//    }
 }

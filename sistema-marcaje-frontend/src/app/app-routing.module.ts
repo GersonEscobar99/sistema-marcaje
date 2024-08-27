@@ -17,20 +17,20 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
-  {
+/*   {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
-  },
+  }, */
   {
     path: 'user',
     loadChildren: () => import('./marcaje/marcaje.module').then( m => m.MarcajeModule)
   },
-  {
+/*   {
     path: '**',
     redirectTo:'/home',
     pathMatch: 'full'
-  }
+  } */
 ];
 
 @NgModule({

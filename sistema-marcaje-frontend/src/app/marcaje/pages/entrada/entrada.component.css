@@ -1,0 +1,31 @@
+.example-container {
+  height: 100vh;
+  display: flex; /* Usa flexbox para el diseño */
+}
+
+.mat-sidenav-container {
+  display: flex; /* Asegura que el contenedor use flexbox */
+  width: 100%;
+}
+
+.mat-sidenav {
+  width: 250px; /* Ancho del sidebar */
+}
+
+.mat-sidenav-content {
+  flex: 1; /* El contenido ocupará el espacio restante */
+  margin-left: 250px; /* Margen para dejar espacio al sidebar */
+}
+
+.content {
+  padding: 16px;
+  margin-top: 0; /* Asegúrate de que no haya margen superior extra si no es necesario */
+}
+
+.mat-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}

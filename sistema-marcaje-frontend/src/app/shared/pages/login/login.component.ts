@@ -31,17 +31,13 @@ export class LoginComponent {
           console.log('Usuario ingresado exitosamente', response);
           swal.fire('Iniciando sesión', 'Usuario ingresado', 'success');
   
-          // Guardar el username en localStorage
           localStorage.setItem('username', this.loginData.username);
   
-          // Verificar si el usuario ya ha marcado entrada
           this.marcajeService.obtenerUltimoMarcaje(this.loginData.username).subscribe(
             (marcaje) => {
               if (marcaje && !marcaje.horaSalida) {
-                // Si ya marcó la entrada pero no ha marcado la salida, redirigir a la página de salida
                 this.router.navigate(['/user/salida']);
               } else {
-                // Si no ha marcado entrada o ya ha marcado salida, redirigir a la página de entrada
                 this.router.navigate(['/user/entrada']);
               }
             },

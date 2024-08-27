@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lista-usuarios',
@@ -12,7 +13,9 @@ export class ListaUsuariosComponent implements OnInit {
   currentPage: number = 0;
   totalPages!: number;
 
-  constructor(private usuarioService: UserService) {}
+  isLoading = false;
+
+  constructor(private usuarioService: UserService, router:Router) {}
 
   ngOnInit() {
     this.cargarUsuarios(this.currentPage);
@@ -22,6 +25,14 @@ export class ListaUsuariosComponent implements OnInit {
     this.usuarioService.obtenerUsuariosPaginados(page, 10).subscribe(data => {
       this.usuarios = data.content;
       this.totalPages = data.totalPages;
+    });
+  }
+
+
+  obtenerUsuariosPaginados(): void {
+    this.usuarioService.obtenerUsuariosPaginados(this.currentPage, 10).subscribe(response => {
+      this.usuarios = response.content; // Ajusta según la estructura de tu respuesta
+      this.totalPages = response.totalPages;
     });
   }
 
@@ -38,4 +49,16 @@ export class ListaUsuariosComponent implements OnInit {
       this.cargarUsuarios(this.currentPage);
     }
   }
+
+  eliminarUsuario(id: number): void {
+    if (confirm('¿Estás seguro de que quieres eliminar este usuario?')) {
+      this.usuarioService.eliminarUsuario(id).subscribe(() => {
+
+        this.obtenerUsuariosPaginados();
+      }, error => {
+        console.error('Error al eliminar el usuario', error);
+      });
+    }
+  }
+
 }
