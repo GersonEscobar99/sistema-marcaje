@@ -43,6 +43,11 @@ public class MarcajeServicioImpl implements MarcajeServicio {
         return marcajeRespository.findByUsuario(usuario);
     }
 
+    @Override
+    public Marcaje obtenerUltimoMarcaje(Usuario usuario) {
+        return marcajeRespository.findTopByUsuarioOrderByIdDesc(usuario);
+    }
+
 //    @Override
 //    public Marcaje obtenerMarcajeActivo(Usuario usuario) {
 //        List<Marcaje> marcajes = marcajeRespository.findByUsuario(usuario);

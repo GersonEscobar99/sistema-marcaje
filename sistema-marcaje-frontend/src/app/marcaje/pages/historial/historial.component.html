@@ -1,0 +1,26 @@
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h3>Historial de Marcajes</h3>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Hora de Entrada</th>
+              <th scope="col">Hora de Salida</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let marcaje of marcajes">
+              <td>{{ marcaje.fecha }}</td>
+              <td>{{ marcaje.horaEntrada }}</td>
+              <td>{{ marcaje.horaSalida }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

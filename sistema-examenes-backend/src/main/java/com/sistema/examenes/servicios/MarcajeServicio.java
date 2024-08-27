@@ -9,5 +9,5 @@ public interface MarcajeServicio {
     Marcaje registrarEntrada(Usuario usuario);
     Marcaje registrarSalida(Usuario usuario);
     List<Marcaje> obtenerMarcajes(Usuario usuario);
-//    Marcaje obtenerMarcajeActivo(Usuario usuario);
+    Marcaje obtenerUltimoMarcaje(Usuario usuario);
 }

@@ -1,12 +1,49 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MarcajeComponent } from './pages/marcaje/marcaje.component';
+import { ListaUsuariosComponent } from './pages/lista-usuarios/lista-usuarios.component';
+import { DetalleUsuarioComponent } from './pages/detalle-usuario/detalle-usuario.component';
+import { AuthGuard } from '../auth.guard';
+import { EntradaComponent } from './pages/entrada/entrada.component';
+import { SalidaComponent } from './pages/salida/salida.component';
+import { HistorialComponent } from './pages/historial/historial.component';
 
 const routes: Routes = [
   {
     path:'marcaje',
-    component: MarcajeComponent
-  }
+    component: MarcajeComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path:'listaUsuarios',
+    component: ListaUsuariosComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'listaUsuarios/:username',
+    component: DetalleUsuarioComponent,
+    canActivate:[AuthGuard]
+  },
+  { path: 'entrada', 
+    component: EntradaComponent, 
+    canActivate: [AuthGuard] 
+  },
+  { path: 'salida', 
+    component: SalidaComponent, 
+    canActivate: [AuthGuard] 
+  },
+  { path: 'historial', 
+    component: HistorialComponent, 
+    canActivate: [AuthGuard] 
+  },
+/*   { path: '', 
+    redirectTo: '/entrada', 
+    pathMatch: 'full' 
+  },
+  { path: '**', 
+    redirectTo: '/entrada' 
+  } */
+
 ];
 
 @NgModule({

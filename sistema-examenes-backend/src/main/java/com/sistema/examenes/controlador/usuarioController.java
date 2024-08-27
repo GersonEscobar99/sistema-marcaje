@@ -5,6 +5,9 @@ import com.sistema.examenes.modelo.Usuario;
 import com.sistema.examenes.modelo.UsuarioRol;
 import com.sistema.examenes.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
@@ -42,9 +45,25 @@ public class usuarioController {
         return  usuarioServicio.obtenerTodosLosUsuarios();
     }
 
+    @GetMapping("/paginados/")
+    public Page<Usuario> obtenerUsuariosPaginados(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return usuarioServicio.obtenerUsuariosPaginados(pageable);
+    }
+
     @GetMapping("/{username}")
     public Usuario obtenerUsuario(@PathVariable("username") String username){
         return  usuarioServicio.obtenerUsuario(username);
+    }
+
+
+    @PutMapping("/{usuarioId}")
+    public Usuario actualizarUsuario(
+            @PathVariable("usuarioId") Long usuarioId,
+            @RequestBody Usuario usuarioActualizado){
+        return usuarioServicio.actualizarUsuario(usuarioId, usuarioActualizado);
     }
 
 

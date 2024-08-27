@@ -1,0 +1,25 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Cambiar de center a flex-start para alinear hacia arriba */
+    align-items: center;
+    min-height: 80vh; /* Cambiar height a min-height para mayor control */
+    text-align: center;
+    padding-top: 50px; /* Agregar un poco de padding superior */
+  }
+  
+  .home-container h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+  }
+  
+  .home-container p {
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 10px; /* Espaciado entre botones */
+  }
+  

@@ -1,0 +1,17 @@
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h3>Registro de Entrada</h3>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="registrarEntrada()">
+          <div class="form-group">
+            <label for="horaEntrada">Hora Actual:</label>
+            <input type="text" id="horaEntrada" class="form-control" [value]="horaActual" readonly>
+          </div>
+          <button type="submit" class="btn btn-primary mt-3" [disabled]="!entradaRegistrada">Registrar Entrada</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

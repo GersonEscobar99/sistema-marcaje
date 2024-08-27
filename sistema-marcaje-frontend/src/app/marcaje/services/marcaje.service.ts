@@ -8,18 +8,23 @@ import { Observable } from 'rxjs';
 })
 export class MarcajeService {
 
-  private apiUrl = 'http://localhost:8080'
+  private apiUrl = 'http://localhost:8080/marcajes'
 
-  constructor(private htt : HttpClient) { }
+  constructor(private http : HttpClient) { }
 
-  registrerMarking(marking: Marcaje):Observable<Marcaje>{
-    const url = `${this.apiUrl}/marcajes/`;
-    return this.htt.post<Marcaje>(url,marking);
+  registrarEntrada(username: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/entrada/${username}`, {});
   }
 
-  getMarkingByuser(userId: number):Observable<Marcaje>{
-    const url = `${this.apiUrl}/usuarios/ ${userId}`;
-    return this.htt.get<Marcaje>(url);
+  registrarSalida(username: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/salida/${username}`, {});
   }
-  
+
+  obtenerHistorial(username: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/historial/${username}`);
+  }
+
+  obtenerUltimoMarcaje(username: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/ultimo/${username}`);
+  }
 }

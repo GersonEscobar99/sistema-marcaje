@@ -6,6 +6,8 @@ import com.sistema.examenes.repositorio.RolRepository;
 import com.sistema.examenes.repositorio.UsuarioRepository;
 import com.sistema.examenes.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,9 +50,35 @@ public class UsuarioServiceImpl implements UsuarioServicio {
         return usuarioRepository.findByUsername(username);
     }
 
+    //ver si funciona
+    @Override
+    public  Usuario actualizarUsuario(Long usuarioId, Usuario usuarioActualizado) {
+        // Buscar el usuario existente por ID
+        Usuario usuarioExistente = usuarioRepository.findById(usuarioId)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        // Actualizar los campos del usuario existente con los valores nuevos
+        usuarioExistente.setUsername(usuarioActualizado.getUsername());
+        usuarioExistente.setPassword(usuarioActualizado.getPassword());
+        usuarioExistente.setNombre(usuarioActualizado.getNombre());
+        usuarioExistente.setApellido(usuarioActualizado.getApellido());
+        usuarioExistente.setEmail(usuarioActualizado.getEmail());
+        usuarioExistente.setTelefono(usuarioActualizado.getTelefono());
+        usuarioExistente.setEnabled(usuarioActualizado.isEnabled());
+        usuarioExistente.setPerfil(usuarioActualizado.getPerfil());
+
+        // Guardar los cambios en la base de datos
+        return usuarioRepository.save(usuarioExistente);
+    }
+
     @Override
     public void eliminarUsiario(Long usuarioId) {
         usuarioRepository.deleteById(usuarioId);
+    }
+
+    @Override
+    public Page<Usuario> obtenerUsuariosPaginados(Pageable pageable) {
+        return usuarioRepository.findAll(pageable);
     }
 
 }

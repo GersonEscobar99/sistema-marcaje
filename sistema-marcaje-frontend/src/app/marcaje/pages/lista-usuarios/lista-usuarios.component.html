@@ -1,0 +1,50 @@
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="mb-0">Lista de Usuarios</h2>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th>#</th>
+              <th>Usuario</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Email</th>
+              <th>Teléfono</th>
+              <th>Opciones</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of usuarios; let i = index">
+              <td>{{ i+1 }}</td>
+              <td>{{ usuario.username }}</td>
+              <td>{{ usuario.nombre }}</td>
+              <td>{{ usuario.apellido }}</td>
+              <td>{{ usuario.email }}</td>
+              <td>{{ usuario.telefono }}</td>
+              <td>
+                <a [routerLink]="['/listaUsuarios' ,usuario.username]"> detalle</a>
+                <a>actualizar</a>
+              
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer">
+        <!-- Controles de paginación -->
+        <div class="d-flex justify-content-between">
+          <button (click)="paginaAnterior()" [disabled]="currentPage === 0" class="btn btn-secondary">
+            Anterior
+          </button>
+          <button (click)="siguientePagina()" [disabled]="currentPage === totalPages - 1" class="btn btn-secondary">
+            Siguiente
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

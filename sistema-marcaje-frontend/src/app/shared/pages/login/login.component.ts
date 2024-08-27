@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Login } from 'src/app/marcaje/interfaces/login.interface';
 import { LoginService } from 'src/app/marcaje/services/login.service';
+import { MarcajeService } from 'src/app/marcaje/services/marcaje.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'shared-login',
@@ -9,42 +13,60 @@ import { LoginService } from 'src/app/marcaje/services/login.service';
 })
 export class LoginComponent {
 
-  loginData = {
+  loginData: Login = {
     username: '',
     password: ''
   };
 
-  constructor(private loginService: LoginService,
-              private router:Router
-  ){}
-
-  alertMessage: string | null = null;
-  alertClass: string = '';
-
-  formSubmit(){
-    this.loginService.login(this.loginData.username, this.loginData.password).subscribe(
-      (response) => {
-        this.showAlert('Inicio de sesión exitoso. ¡Bienvenido!', 'alert-success');
-        setTimeout(() => {
-          this.router.navigate(['/marcaje']);
-        }, 500);
-      },
-      (error) => {
-        this.showAlert('Nombre de usuario o contraseña incorrectos.', 'alert-danger');
-        this.loginData.username ='';
-        this.loginData.password='';
-      }
-    );
-  }
+  constructor(
+    private snack: MatSnackBar,
+    private loginService: LoginService,
+    private marcajeService: MarcajeService,
+    private router: Router){}
 
 
-  showAlert(message: string, alertClass: string) {
-    this.alertMessage = message;
-    this.alertClass = alertClass;
-    setTimeout(() => {
-      this.alertMessage = null;
-    }, 1000);
-  }
+    formSubmit() {
+      this.loginService.login(this.loginData.username, this.loginData.password).subscribe(
+        (response) => {
+          console.log('Usuario ingresado exitosamente', response);
+          swal.fire('Iniciando sesión', 'Usuario ingresado', 'success');
+  
+          // Guardar el username en localStorage
+          localStorage.setItem('username', this.loginData.username);
+  
+          // Verificar si el usuario ya ha marcado entrada
+          this.marcajeService.obtenerUltimoMarcaje(this.loginData.username).subscribe(
+            (marcaje) => {
+              if (marcaje && !marcaje.horaSalida) {
+                // Si ya marcó la entrada pero no ha marcado la salida, redirigir a la página de salida
+                this.router.navigate(['/user/salida']);
+              } else {
+                // Si no ha marcado entrada o ya ha marcado salida, redirigir a la página de entrada
+                this.router.navigate(['/user/entrada']);
+              }
+            },
+            (error) => {
+              console.error('Error al obtener el último marcaje', error);
+              this.snack.open('Error al obtener el estado del marcaje', 'Aceptar', {
+                duration: 2000,
+                verticalPosition: 'top',
+                horizontalPosition: 'right'
+              });
+              // Redirigir a la página de entrada en caso de error
+              this.router.navigate(['/user/entrada']);
+            }
+          );
+        },
+        (error) => {
+          console.error('Error al intentar ingresar', error);
+          this.snack.open("Ha ocurrido un error en el sistema", "Aceptar", {
+            duration: 1000,
+            verticalPosition: 'top',
+            horizontalPosition: 'right'
+          });
+        }
+      );
+    }
 
   
 }

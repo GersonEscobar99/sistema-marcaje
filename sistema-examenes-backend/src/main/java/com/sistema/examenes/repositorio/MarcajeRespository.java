@@ -9,5 +9,6 @@ import java.util.List;
 
 public interface MarcajeRespository  extends JpaRepository<Marcaje, Long> {
     List<Marcaje> findByUsuario(Usuario usuario);
+    Marcaje findTopByUsuarioOrderByIdDesc(Usuario usuario);
 
 }

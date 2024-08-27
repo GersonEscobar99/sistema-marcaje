@@ -1,18 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-body">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Tu Logo</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="login">Iniciar sesión</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="signup">Registrar</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+<mat-toolbar color="primary">
+  <!-- <span>Sistema de Marcaje</span> -->
+  <a *ngIf="!loginService.isUserAuthenticated()" [routerLink]="'home'" mat-button >Sistema de marcaje</a>
+  <span class="example-spacer"></span>
+  <div class="auth-buttons">
+    <a *ngIf="!loginService.isUserAuthenticated()" [routerLink]="'login'" mat-button >Iniciar sesión</a>
+    <a *ngIf="!loginService.isUserAuthenticated()" [routerLink]="'signup'" mat-button >Registrarse</a>
+    <a *ngIf="loginService.isUserAuthenticated()" (click)="logout()" mat-button >Salir</a>
+  </div>
+</mat-toolbar>
