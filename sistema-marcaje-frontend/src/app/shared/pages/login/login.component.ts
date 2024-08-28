@@ -6,6 +6,7 @@ import { LoginService } from 'src/app/marcaje/services/login.service';
 import { MarcajeService } from 'src/app/marcaje/services/marcaje.service';
 import swal from 'sweetalert2';
 
+
 @Component({
   selector: 'shared-login',
   templateUrl: './login.component.html',
@@ -28,6 +29,7 @@ export class LoginComponent {
     formSubmit() {
       this.loginService.login(this.loginData.username, this.loginData.password).subscribe(
         (response) => {
+      
           console.log('Usuario ingresado exitosamente', response);
           swal.fire('Iniciando sesión', 'Usuario ingresado', 'success');
   

@@ -39,6 +39,14 @@ export class HistorialComponent implements OnInit {
 
   convertirFechaHora(fechaHora: string): string {
     const fecha = new Date(fechaHora);
-    return fecha.toLocaleString(); // Puedes usar toLocaleTimeString() si solo quieres la hora
+    const fe =`${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`
+    return fecha.toLocaleString(); 
+  }
+
+  obtenerFecha(fechaMarcaje:string){
+    const fecha = new Date();
+    const fe =`${fecha.getDate()}-${fecha.getMonth()}-${fecha.getFullYear()}`
+    const fer = this.cargarMarcajes()
+    return fer
   }
 }

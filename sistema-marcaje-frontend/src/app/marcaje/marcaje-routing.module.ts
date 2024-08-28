@@ -20,14 +20,16 @@ const routes: Routes = [
     canActivate:[AuthGuard]
   },
   { path: 'entrada', 
-    component: EntradaComponent
+    component: EntradaComponent,
+    canActivate: [AuthGuard] 
   },
   { path: 'salida', 
     component: SalidaComponent, 
     canActivate: [AuthGuard] 
   },
   { path: 'historial', 
-    component: HistorialComponent
+    component: HistorialComponent,
+    canActivate: [AuthGuard] 
   },
   {
     path:'editar/:usuarioId',

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MarcajeService } from '../../services/marcaje.service';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-entrada',
@@ -14,7 +15,7 @@ export class EntradaComponent implements OnInit {
   entradaRegistrada: boolean = false;
   private intervalId: any;
 
-  constructor(private marcajeService:MarcajeService, private router: Router){}
+  constructor(private marcajeService:MarcajeService, private router: Router, private loginService: LoginService){}
 
   ngOnInit(): void {
     this.username = localStorage.getItem('username') || ''; 
@@ -28,9 +29,7 @@ export class EntradaComponent implements OnInit {
       (marcaje) => {
         if (marcaje && !marcaje.horaSalida) {
           this.router.navigate(['/salida']);
-        } else if(marcaje && marcaje.horaEntrada){
-          this.entradaRegistrada= true;
-        }
+        } 
       },
       error => {
         console.error('Error al verificar el último marcaje', error);
@@ -56,6 +55,11 @@ export class EntradaComponent implements OnInit {
         alert('Hubo un error al registrar la entrada.');
       }
     );
+  }
+
+  salir(){
+    this.loginService.logout();
+    this.router.navigate(['/home']);
   }
   
 }

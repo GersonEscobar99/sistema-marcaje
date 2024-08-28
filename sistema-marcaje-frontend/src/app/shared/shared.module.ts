@@ -15,7 +15,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -40,6 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     MatIconModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     
   ],
 

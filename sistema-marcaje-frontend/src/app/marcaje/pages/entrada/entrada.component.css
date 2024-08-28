@@ -1,31 +1,41 @@
-.example-container {
-  height: 100vh;
-  display: flex; /* Usa flexbox para el diseño */
+/* marcaje-sidebar {
+  display: block;
+  position: relative;
+  z-index: 1000;
 }
 
-.mat-sidenav-container {
-  display: flex; /* Asegura que el contenedor use flexbox */
+
+.container {
+  margin-top: 20px;
+}
+
+.button-group {
+  margin-top: 20px; 
+  display: flex;
+  justify-content: center; 
+  gap: 20px;
+}
+
+
+
+.marcaje-card {
+  padding: 20px; 
+}
+
+.full-width {
   width: 100%;
+  margin-bottom: 16px;
 }
 
-.mat-sidenav {
-  width: 250px; /* Ancho del sidebar */
+.button-group {
+  margin-top: 20px; 
+  display: flex;
+  justify-content: center; 
+  gap: 20px;
 }
+ */
 
-.mat-sidenav-content {
-  flex: 1; /* El contenido ocupará el espacio restante */
-  margin-left: 250px; /* Margen para dejar espacio al sidebar */
-}
-
-.content {
-  padding: 16px;
-  margin-top: 0; /* Asegúrate de que no haya margen superior extra si no es necesario */
-}
-
-.mat-toolbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
+.button{
+  margin-right: 20px;
+  margin: 20px;
 }

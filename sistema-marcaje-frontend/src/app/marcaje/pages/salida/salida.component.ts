@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MarcajeService } from '../../services/marcaje.service';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-salida',
@@ -13,8 +14,9 @@ export class SalidaComponent implements OnInit {
   horaActual: string = '';
   entradaRegistrada: boolean = false;
   private intervalId: any;
+  private isAuthenticated = false;
 
-  constructor(private marcajeService: MarcajeService, private router:Router){}
+  constructor(private marcajeService: MarcajeService, private router:Router, private loginService:LoginService){}
 
   ngOnInit(): void {
     this.username = localStorage.getItem('username') || ''; 
@@ -52,6 +54,11 @@ export class SalidaComponent implements OnInit {
         alert('Hubo un error al registrar la salida.');
       }
     );
+  }
+
+  salir(){
+    this.loginService.logout();
+    this.router.navigate(['/home']);
   }
 
 }

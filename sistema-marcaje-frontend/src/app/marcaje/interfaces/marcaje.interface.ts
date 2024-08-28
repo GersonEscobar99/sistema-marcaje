@@ -4,4 +4,5 @@ export interface Marcaje {
     horaEntrada?: string,
     horaSalida?: string,
     tipo?: string,
+    usuario_id:string,
 }

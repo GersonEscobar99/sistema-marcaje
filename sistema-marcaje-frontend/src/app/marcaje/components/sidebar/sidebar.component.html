@@ -1,71 +1,22 @@
-<!-- <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" opened>
-      <mat-nav-list>
-        <mat-list-item>
-          <mat-icon>home</mat-icon>
-          <a mat-button routerLink="/home">Inicio</a>
-        </mat-list-item>
-        <mat-list-item>
-          <mat-icon>group</mat-icon>
-          <a mat-button routerLink="/user/listaUsuarios">CRUD Usuarios</a>
-        </mat-list-item>
-      </mat-nav-list>
-    </mat-sidenav>
-  
-    <mat-sidenav-content>
-      <mat-toolbar color="primary">
-        <button mat-icon-button (click)="sidenav.toggle()">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span>Sistema Marcaje</span>
-      </mat-toolbar>
-      <div class="content">
-        <router-outlet></router-outlet>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  
-   -->
-
-   <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" opened>
-      <mat-nav-list>
-        <!-- Opción de Inicio -->
-        <mat-list-item>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav-content #sidenav mode="side" opened>
+    <mat-nav-list>
+      <mat-list-item>
+        <a mat-button (click)="onLogout()">
           <mat-icon>logout</mat-icon>
-          <a mat-button routerLink="/home">Salir</a>
-        </mat-list-item>
-  
-        <!-- Opción de CRUD Usuarios -->
-        <mat-list-item>
-          <mat-icon>group</mat-icon>
-          <a mat-button routerLink="/user/listaUsuarios">Lista Usuarios</a>
-        </mat-list-item>
-  
-        <!-- Opción de Registro de Marcaje -->
-        <mat-list-item>
-          <mat-icon>edit</mat-icon>
-          <a mat-button routerLink="/registro-marcaje">Registro de Marcaje</a>
-        </mat-list-item>
-  
-        <!-- Opción de Lista de Marcaje -->
-        <mat-list-item>
-          <mat-icon>list</mat-icon>
-          <a mat-button routerLink="/user/historial">Lista de Marcaje</a>
-        </mat-list-item>
-      </mat-nav-list>
-    </mat-sidenav>
-  
-    <mat-sidenav-content>
-      <mat-toolbar color="primary">
-        <button mat-icon-button (click)="sidenav.toggle()">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span>Sistema Marcaje</span>
-      </mat-toolbar>
-      <div class="content">
-        <router-outlet></router-outlet>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  
+          
+          Salir</a>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon>group</mat-icon>
+        <a mat-button routerLink="/user/listaUsuarios">Lista Usuarios</a>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon>list</mat-icon>
+        <a mat-button routerLink="/user/historial">Lista de Marcaje</a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav-content>
+</mat-sidenav-container>

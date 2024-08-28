@@ -1,12 +1,19 @@
-/* Asegúrate de que el sidebar esté posicionado correctamente */
+
 marcaje-sidebar {
     display: block;
     position: relative;
-    z-index: 1000; /* Asegúrate de que esté sobre otros elementos si es necesario */
+    z-index: 1000;
   }
   
-  /* Agrega margen para el contenedor principal si es necesario */
+
   .container {
-    margin-top: 20px; /* Ajusta según sea necesario */
+    margin-top: 20px;
+  }
+  
+  .button-group {
+    margin-top: 20px; 
+    display: flex;
+    justify-content: center; 
+    gap: 20px;
   }
   
