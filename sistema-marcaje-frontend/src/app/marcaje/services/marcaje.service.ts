@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Marcaje } from '../interfaces/marcaje.interface';
 import { Observable } from 'rxjs';
@@ -26,5 +26,11 @@ export class MarcajeService {
 
   obtenerUltimoMarcaje(username: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/ultimo/${username}`);
+  }
+
+  obtenerMarcajesPaginados(page:number, size: number):Observable<any>{
+    const url = `${this.apiUrl}/paginados/`
+    let params = new HttpParams().set('page', page).set('size', size);
+    return this.http.get<any>(url, {params})
   }
 }

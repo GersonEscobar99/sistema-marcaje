@@ -20,6 +20,7 @@ import { HistorialComponent } from './pages/historial/historial.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
 import { HomeMarcajeComponent } from './components/home-marcaje/home-marcaje.component';
+import { ListaMarcajeComponent } from './pages/lista-marcaje/lista-marcaje.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HomeMarcajeComponent } from './components/home-marcaje/home-marcaje.com
     HistorialComponent,
     SidebarComponent,
     EditarUsuarioComponent,
-    HomeMarcajeComponent
+    HomeMarcajeComponent,
+    ListaMarcajeComponent
   ],
   imports: [
     CommonModule,

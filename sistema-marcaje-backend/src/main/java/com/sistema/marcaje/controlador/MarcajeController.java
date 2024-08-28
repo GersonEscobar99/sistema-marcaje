@@ -59,6 +59,9 @@ import com.sistema.marcaje.modelo.Usuario;
 import com.sistema.marcaje.servicios.MarcajeServicio;
 import com.sistema.marcaje.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -118,6 +121,14 @@ public class MarcajeController {
             return marcajeServicio.obtenerUltimoMarcaje(usuario);
         }
         return null;
+    }
+
+    @GetMapping("/paginados/")
+    public Page<Marcaje> obtenerUsuariosPaginados(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return marcajeServicio.obtenerMarcajesPaginados(pageable);
     }
 
 

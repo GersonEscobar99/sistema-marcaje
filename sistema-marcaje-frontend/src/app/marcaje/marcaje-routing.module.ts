@@ -7,6 +7,7 @@ import { EntradaComponent } from './pages/entrada/entrada.component';
 import { SalidaComponent } from './pages/salida/salida.component';
 import { HistorialComponent } from './pages/historial/historial.component';
 import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
+import { ListaMarcajeComponent } from './pages/lista-marcaje/lista-marcaje.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
     path:'editar/:usuarioId',
     component:EditarUsuarioComponent
   },
+  {
+    path: 'prueba',
+    component: ListaMarcajeComponent
+  }
 
 ];
 

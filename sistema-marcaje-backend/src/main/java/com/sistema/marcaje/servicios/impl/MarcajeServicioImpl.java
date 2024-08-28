@@ -5,6 +5,8 @@ import com.sistema.marcaje.modelo.Usuario;
 import com.sistema.marcaje.repositorio.MarcajeRespository;
 import com.sistema.marcaje.servicios.MarcajeServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -51,6 +53,11 @@ public class MarcajeServicioImpl implements MarcajeServicio {
     @Override
     public List<Marcaje> obtenerTodosLosMarcajes() {
         return marcajeRespository.findAll();
+    }
+
+    @Override
+    public Page<Marcaje> obtenerMarcajesPaginados(Pageable pageable) {
+        return marcajeRespository.findAll(pageable);
     }
 
 }
