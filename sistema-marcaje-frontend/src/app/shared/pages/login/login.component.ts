@@ -48,7 +48,7 @@ export class LoginComponent {
                 verticalPosition: 'top',
                 horizontalPosition: 'right'
               });
-              // Redirigir a la página de entrada en caso de error
+
               this.router.navigate(['/user/entrada']);
             }
           );

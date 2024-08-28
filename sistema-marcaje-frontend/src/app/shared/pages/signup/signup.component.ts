@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/marcaje/interfaces/user.interface';
 import { UserService } from 'src/app/marcaje/services/user.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'shared-signup',
@@ -29,13 +30,15 @@ export class SignupComponent {
     if (this.user.nombre && this.user.apellido && this.user.email && this.user.telefono && this.user.username && this.user.password) {
       this.userService.addUser(this.user).subscribe(
         (response) => {
-          this.showAlert('Inicio de sesión exitoso. ¡Bienvenido!', 'alert-success');
-          setTimeout(() => {
-            this.router.navigate(['/login']);
-          }, 500);
+          swal.fire('Registro de usuario correcto.', '¡Usuario Agregado!', 'success');
+          this.router.navigate(['/user/listaUsuarios']);
+/*           setTimeout(() => {
+            this.router.navigate(['/user/listaUsuarios']);
+          }, 500); */
         },
         (error) => {
           this.showAlert('Nombre de usuario o contraseña incorrectos.', 'alert-danger');
+          console.log('no se agrego')
         }
       );
     } else {

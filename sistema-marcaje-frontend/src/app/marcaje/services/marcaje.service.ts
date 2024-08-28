@@ -20,8 +20,8 @@ export class MarcajeService {
     return this.http.post(`${this.apiUrl}/salida/${username}`, {});
   }
 
-  obtenerHistorial(username: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/historial/${username}`);
+  obtenerHistorial(username: string): Observable<Marcaje[]> {
+    return this.http.get<Marcaje[]>(`${this.apiUrl}/historial/${username}`);
   }
 
   obtenerUltimoMarcaje(username: string): Observable<any> {

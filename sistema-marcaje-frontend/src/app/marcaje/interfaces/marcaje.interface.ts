@@ -1,6 +1,7 @@
 export interface Marcaje {
     id?: number,
-    usuarioId: number,
-    fechaHora: string,
-    tipo: string,
+    fecha: string,
+    horaEntrada?: string,
+    horaSalida?: string,
+    tipo?: string,
 }

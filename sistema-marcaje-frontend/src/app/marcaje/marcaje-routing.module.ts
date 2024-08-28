@@ -27,8 +27,7 @@ const routes: Routes = [
     canActivate: [AuthGuard] 
   },
   { path: 'historial', 
-    component: HistorialComponent, 
-    canActivate: [AuthGuard] 
+    component: HistorialComponent
   },
   {
     path:'editar/:usuarioId',

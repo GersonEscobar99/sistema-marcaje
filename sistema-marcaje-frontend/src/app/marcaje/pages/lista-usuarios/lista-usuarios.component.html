@@ -1,52 +1,66 @@
-<div class="container mt-5">
-    <div class="card">
-      <div class="card-header">
-        <h2 class="mb-0">Lista de Usuarios</h2>
-        <button [routerLink]="['/signup']" class="btn btn-success m-1">Agregar usuario</button>
-      </div>
-      <div class="card-body">
-        <table class="table table-bordered table-hover">
-          <thead class="thead-dark">
-            <tr>
-              <th>#</th>
-              <th>Usuario</th>
-              <th>Nombre</th>
-              <th>Apellido</th>
-              <th>Email</th>
-              <th>Teléfono</th>
-              <th>Opciones</th>
-              
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let usuario of usuarios; let i = index">
-              <td>{{ i+1 }}</td>
-              <td>{{ usuario.username }}</td>
-              <td>{{ usuario.nombre }}</td>
-              <td>{{ usuario.apellido }}</td>
-              <td>{{ usuario.email }}</td>
-              <td>{{ usuario.telefono }}</td>
-              <td>
-                <a [routerLink]="['/user/listaUsuarios' ,usuario.username]" class="btn btn-success m-1"> detalle</a>
-                <a [routerLink]="['/user/editar', usuario.id]" class="btn btn-primary m-1">Modificar</a>
-                <button (click)="eliminarUsuario(usuario.id!)" class="btn btn-danger m-1" >Eliminar</button>
-              
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="card-footer">
-        <!-- Controles de paginación -->
-        <div class="d-flex justify-content-between">
-          <button (click)="paginaAnterior()" [disabled]="currentPage === 0" class="btn btn-secondary">
-            Anterior
+<div class="row">
+  <div class="col-md-2">
+    <marcaje-sidebar></marcaje-sidebar>
+  </div>
+
+  <div class="col-md-10">
+
+    <div class="container mt-5">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="mb-0 text-center">Lista de Usuarios</h2>
+          <button [routerLink]="['/signup']" class="btn btn-outline-light m-1">
+            Agregar usuario
           </button>
-          <button (click)="siguientePagina()" [disabled]="currentPage === totalPages - 1" class="btn btn-secondary">
-            Siguiente
-          </button>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th>#</th>
+                <th>Usuario</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let usuario of usuarios; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ usuario.username }}</td>
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.apellido }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.telefono }}</td>
+                <td>
+                  <a [routerLink]="['/user/listaUsuarios', usuario.username]" class="btn btn-outline-info m-1">
+                    <i class="bi bi-eye"> detalle</i>
+                  </a>
+                  <a [routerLink]="['/user/editar', usuario.id]" class="btn btn-outline-primary m-1">
+                    <i class="bi bi-pencil">editar</i>
+                  </a>
+                  <button (click)="eliminarUsuario(usuario.id!)" class="btn btn-outline-danger m-1">
+                    <i class="bi bi-trash">eliminar</i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer">
+          <div class="d-flex justify-content-between">
+            <button (click)="paginaAnterior()" [disabled]="currentPage === 0" class="btn btn-outline-secondary">
+              <i class="bi bi-arrow-left">Anterior</i>
+            </button>
+            <button (click)="siguientePagina()" [disabled]="currentPage === totalPages - 1" class="btn btn-outline-secondary">
+              <i class="bi bi-arrow-right">Siguiente</i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
   

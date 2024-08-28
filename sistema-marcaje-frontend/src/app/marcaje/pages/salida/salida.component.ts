@@ -12,12 +12,17 @@ export class SalidaComponent implements OnInit {
   username: string = '';
   horaActual: string = '';
   entradaRegistrada: boolean = false;
+  private intervalId: any;
 
   constructor(private marcajeService: MarcajeService, private router:Router){}
 
   ngOnInit(): void {
     this.username = localStorage.getItem('username') || ''; 
     this.actualizarHoraActual();
+
+    this.intervalId = setInterval(() => {
+      this.actualizarHoraActual();
+    }, 1000);
 
     this.marcajeService.obtenerUltimoMarcaje(this.username).subscribe(
       (marcaje) => {
@@ -41,6 +46,7 @@ export class SalidaComponent implements OnInit {
       data => {
         alert('Salida registrada exitosamente.');
         this.entradaRegistrada = true;
+        this.router.navigate(['/home']);
       },
       error => {
         alert('Hubo un error al registrar la salida.');

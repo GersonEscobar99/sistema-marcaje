@@ -16,7 +16,7 @@
                 <label for="horaEntrada">Hora Actual:</label>
                 <input type="text" id="horaEntrada" class="form-control" [value]="horaActual" readonly>
               </div>
-              <button type="submit" class="btn btn-primary mt-3" [disabled]="entradaRegistrada">Registrar Entrada</button>
+              <button type="submit" class="btn btn-primary mt-3" [disabled]="!entradaRegistrada">Registrar Entrada</button>
             </form>
           </div>
         </div>
