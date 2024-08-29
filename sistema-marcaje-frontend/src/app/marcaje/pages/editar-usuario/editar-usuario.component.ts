@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-editar-usuario',
@@ -10,48 +11,34 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditarUsuarioComponent implements OnInit{
 
-  usuario: User | null = null;
-  isLoading = true;
-  errorMessage: string | null = null;
+  usuarioId!:number;
+
+  usuario: User = {
+    nombre: '',
+    apellido: '',
+    email: '',
+    telefono: '',
+    perfil: ''
+  };
 
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) { }
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const usuarioId = Number(params.get('usuarioId'));
-      if (usuarioId) {
-        this.cargarUsuario(usuarioId);
-      }
-    });
+    this.usuarioId = this.route.snapshot.params['usuarioId'];
+    this.userService.obtenerUsuarioPorId(this.usuarioId).subscribe(data => {
+      this.usuario = data;
+    }, error => console.log(error));
   }
 
-  cargarUsuario(usuarioId: number): void {
-    this.isLoading = true;
-    this.userService.obtenerUsuario(usuarioId.toString()).subscribe(usuario => {
-      this.usuario = usuario;
-      this.isLoading = false;
-    }, error => {
-      console.error('Error al cargar el usuario', error);
-      this.isLoading = false;
-      this.errorMessage = 'No se pudo cargar el usuario.';
-    });
-  }
 
-  actualizarUsuario(): void {
-    if (this.usuario) {
-      this.isLoading = true;
-      this.userService.actualizarUsuario(this.usuario.id!, this.usuario).subscribe(() => {
-        this.isLoading = false;
-        this.router.navigate(['/user/listaUsuarios']); 
-      }, error => {
-        console.error('Error al actualizar el usuario', error);
-        this.isLoading = false;
-        this.errorMessage = 'No se pudo actualizar el usuario.';
-      });
-    }
+  onSubmit() {
+    this.userService.actualizarUsuario(this.usuarioId, this.usuario).subscribe(data => {
+      this.router.navigate(['/marcajes/listaUsuarios']);
+      alert("se ha actualizado el usuario correctamete")
+    }, error => console.log(error));
   }
 }

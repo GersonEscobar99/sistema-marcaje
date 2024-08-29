@@ -14,7 +14,7 @@ const routes: Routes = [
     component: SignupComponent
   },
   {
-    path: 'login',
+    path: 'auth/login',
     component: LoginComponent
   },
   {
@@ -23,7 +23,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'user',
+    path: 'marcajes',
     loadChildren: () => import('./marcaje/marcaje.module').then( m => m.MarcajeModule)
   },
   {

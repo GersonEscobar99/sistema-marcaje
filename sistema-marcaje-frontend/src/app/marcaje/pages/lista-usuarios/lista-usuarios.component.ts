@@ -31,7 +31,7 @@ export class ListaUsuariosComponent implements OnInit {
 
   obtenerUsuariosPaginados(): void {
     this.usuarioService.obtenerUsuariosPaginados(this.currentPage, 10).subscribe(response => {
-      this.usuarios = response.content; // Ajusta según la estructura de tu respuesta
+      this.usuarios = response.content; 
       this.totalPages = response.totalPages;
     });
   }

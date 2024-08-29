@@ -38,9 +38,9 @@ export class LoginComponent {
           this.marcajeService.obtenerUltimoMarcaje(this.loginData.username).subscribe(
             (marcaje) => {
               if (marcaje && !marcaje.horaSalida) {
-                this.router.navigate(['/user/salida']);
+                this.router.navigate(['/marcajes/salida']);
               } else {
-                this.router.navigate(['/user/entrada']);
+                this.router.navigate(['/marcajes/entrada']);
               }
             },
             (error) => {
@@ -51,7 +51,7 @@ export class LoginComponent {
                 horizontalPosition: 'right'
               });
 
-              this.router.navigate(['/user/entrada']);
+              this.router.navigate(['/marcajes/entrada']);
             }
           );
         },

@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -50,14 +51,21 @@ public class UsuarioServiceImpl implements UsuarioServicio {
         return usuarioRepository.findByUsername(username);
     }
 
+    @Override
+    public Optional<Usuario> obtenerUsuarioPorId(Long usuarioId) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(usuarioId);
+        if (usuarioOptional.isPresent()) {
+            return Optional.of(usuarioOptional.get());
+        } else {
+            throw new RuntimeException("Usuario no encontrado con ID: " + usuarioId);
+        }
+    }
+
     //ver si funciona
     @Override
     public  Usuario actualizarUsuario(Long usuarioId, Usuario usuarioActualizado) {
-        // Buscar el usuario existente por ID
         Usuario usuarioExistente = usuarioRepository.findById(usuarioId)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-
-        // Actualizar los campos del usuario existente con los valores nuevos
         usuarioExistente.setUsername(usuarioActualizado.getUsername());
         usuarioExistente.setPassword(usuarioActualizado.getPassword());
         usuarioExistente.setNombre(usuarioActualizado.getNombre());
@@ -67,7 +75,6 @@ public class UsuarioServiceImpl implements UsuarioServicio {
         usuarioExistente.setEnabled(usuarioActualizado.isEnabled());
         usuarioExistente.setPerfil(usuarioActualizado.getPerfil());
 
-        // Guardar los cambios en la base de datos
         return usuarioRepository.save(usuarioExistente);
     }
 

@@ -8,10 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @RestController
@@ -58,14 +61,28 @@ public class usuarioController {
         return  usuarioServicio.obtenerUsuario(username);
     }
 
-
-    @PutMapping("/{usuarioId}")
-    public Usuario actualizarUsuario(
-            @PathVariable("usuarioId") Long usuarioId,
-            @RequestBody Usuario usuarioActualizado){
-        return usuarioServicio.actualizarUsuario(usuarioId, usuarioActualizado);
+    @GetMapping("/id/{usuarioId}")
+    public ResponseEntity<Optional<Usuario>> obtenerUsuarioPorId(@PathVariable("usuarioId") Long usuarioId) {
+        try {
+            Optional<Usuario> usuario = usuarioServicio.obtenerUsuarioPorId(usuarioId);
+            return new ResponseEntity<>(usuario, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
+
+    @PutMapping("/{usuarioId}")
+    public ResponseEntity<Usuario> actualizarUsuario(
+            @PathVariable("usuarioId") Long usuarioId,
+            @RequestBody Usuario usuarioActualizado) {
+        try {
+            Usuario usuarioActualizadoEnDb = usuarioServicio.actualizarUsuario(usuarioId, usuarioActualizado);
+            return new ResponseEntity<>(usuarioActualizadoEnDb, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
 
     @DeleteMapping("/{usuarioId}")
     public void eliminarUsuario(@PathVariable("usuarioId") Long usuarioId){

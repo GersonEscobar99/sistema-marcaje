@@ -28,13 +28,18 @@ export class UserService {
     return this.http.get<User>(url);
   }
 
+  obtenerUsuarioPorId(usuarioId: number):Observable<User>{
+    const url = `${this.apiUrl}/id/${usuarioId}`;
+    return this.http.get<User>(url);
+  }
+
   eliminarUsuario(userId: number):Observable<User>{
     const url = `${this.apiUrl}/${userId}`;
     return this.http.delete<User>(url);
   }
 
-  actualizarUsuario(id: number, user: User):Observable<User>{
-    const url = `${this.apiUrl}/${id}`;
+  actualizarUsuario(usuarioId: number, user: User):Observable<User>{
+    const url = `${this.apiUrl}/${usuarioId}`;
     return this.http.put<User>(url,user);
   }
 }
