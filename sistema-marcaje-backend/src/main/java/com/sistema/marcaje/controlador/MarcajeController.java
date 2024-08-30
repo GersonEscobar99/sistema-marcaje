@@ -70,7 +70,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/marcajes")
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("http://3.133.145.220")
 public class MarcajeController {
 
     @Autowired
