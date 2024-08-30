@@ -32,9 +32,6 @@ export class SignupComponent {
         (response) => {
           swal.fire('Registro de usuario correcto.', '¡Usuario Agregado!', 'success');
           this.router.navigate(['/user/listaUsuarios']);
-/*           setTimeout(() => {
-            this.router.navigate(['/user/listaUsuarios']);
-          }, 500); */
         },
         (error) => {
           this.showAlert('Nombre de usuario o contraseña incorrectos.', 'alert-danger');
@@ -52,5 +49,9 @@ export class SignupComponent {
     setTimeout(() => {
       this.alertMessage = null;
     }, 1000);
+  }
+
+  onSubmit(){
+    this.router.navigate(['/marcajes/listaUsuario']);
   }
 }

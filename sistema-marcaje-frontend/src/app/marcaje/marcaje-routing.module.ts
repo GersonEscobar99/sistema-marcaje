@@ -28,17 +28,21 @@ const routes: Routes = [
     component: SalidaComponent, 
     canActivate: [AuthGuard] 
   },
-  { path: 'historial', 
+  { path: 'historialMarcajePorUsuario', 
     component: HistorialComponent,
     canActivate: [AuthGuard] 
   },
   {
     path:'editar/:usuarioId',
-    component:EditarUsuarioComponent
+    component:EditarUsuarioComponent,
+    canActivate: [AuthGuard] 
+
   },
   {
-    path: 'prueba',
-    component: ListaMarcajeComponent
+    path: 'historialMarcajes',
+    component: ListaMarcajeComponent,
+    canActivate: [AuthGuard] 
+    
   }
 
 ];

@@ -46,7 +46,7 @@ import { ListaMarcajeComponent } from './pages/lista-marcaje/lista-marcaje.compo
     MatButtonModule,
     MatProgressSpinnerModule,
     SharedModule,
-    FormsModule,
+    FormsModule
   ]
 })
 export class MarcajeModule { }

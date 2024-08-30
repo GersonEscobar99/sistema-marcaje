@@ -48,6 +48,7 @@ export class SalidaComponent implements OnInit {
       data => {
         alert('Salida registrada exitosamente.');
         this.entradaRegistrada = true;
+        this.loginService.logout();
         this.router.navigate(['/home']);
       },
       error => {

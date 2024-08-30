@@ -4,8 +4,10 @@ import com.sistema.marcaje.modelo.Usuario;
 import com.sistema.marcaje.seguridad.LoginRequest;
 import com.sistema.marcaje.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,5 +35,4 @@ public class AuthController {
             return ResponseEntity.ok("login incorrecto");
         }
     }
-
 }

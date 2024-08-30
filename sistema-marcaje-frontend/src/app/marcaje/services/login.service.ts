@@ -8,7 +8,7 @@ import { Login } from '../interfaces/login.interface';
 })
 export class LoginService {
   
-  private apiUrl = 'http://localhost:8080';
+  private apiUrl = 'http://3.133.145.220:8080/sistema-marcaje-backend';
   private isAuthenticated = false;
 
   constructor(private http: HttpClient) { }
